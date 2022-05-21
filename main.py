@@ -14,17 +14,15 @@ driver = webdriver.Chrome(PATH_CHROMEDRIVER)
 
 driver.get(PAGE_HTML)
 
-print(driver.title)
-print(driver.page_source)
+if driver.title == "Login":
+    element_email = driver.find_element_by_name("email")
+    element_email.send_keys(EMAIL_LOGIN)
 
-element_email = driver.find_element_by_name("email")
-element_email.send_keys(EMAIL_LOGIN)
+    element_senha = driver.find_element_by_name("password")
+    element_senha.send_keys(PASSWORD_LOGIN)
 
-element_senha = driver.find_element_by_name("password")
-element_senha.send_keys(PASSWORD_LOGIN)
-
-element_login = driver.find_element_by_id("submit")
-element_login.click()
+    element_login = driver.find_element_by_id("submit")
+    element_login.click()
 
 driver.close() # tab
 driver.quit()
